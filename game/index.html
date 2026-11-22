@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emberfall — Duel of the Three Winds</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div id="brand">EMBERFALL <span>Duel of the Three Winds</span></div>
+    <div id="top-right">
+      <span id="round-label">Round 1</span>
+      <button id="sound-btn" type="button" title="Toggle sound (M)">Sound: on</button>
+      <button id="restart-btn" type="button" title="Restart (R)">Restart</button>
+    </div>
+  </header>
+
+  <section id="opponent-zone" class="zone" aria-label="Opponent">
+    <div class="fighter">
+      <div class="avatar rival">Z</div>
+      <div class="fighter-info">
+        <div class="fighter-name">ZEPHYR <span>the Gale Warden</span></div>
+        <div class="bar-row"><span class="bar-label">Life</span><div class="bar"><div id="rival-life-fill" class="fill rival-fill" style="width:100%"></div></div><span id="rival-life-num" class="bar-num">20</span></div>
+        <div class="bar-row"><span class="bar-label">Ember</span><div class="bar ember-bar"><div id="rival-ember-fill" class="fill ember-fill" style="width:50%"></div></div><span id="rival-ember-num" class="bar-num">5</span></div>
+      </div>
+      <div id="rival-hand" class="hand mini-hand" aria-label="Opponent hand"></div>
+    </div>
+  </section>
+
+  <section id="arena" aria-label="Arena">
+    <div id="arena-cards">
+      <div class="played-slot" id="rival-played-slot">
+        <div class="slot-label">Zephyr plays</div>
+        <div class="slot" id="rival-played"></div>
+      </div>
+      <div id="versus">VS</div>
+      <div class="played-slot" id="player-played-slot">
+        <div class="slot-label">You play</div>
+        <div class="slot" id="player-played"></div>
+      </div>
+    </div>
+    <div id="banner" role="status">Choose a card from your hand, then press Reveal.</div>
+    <div id="log-line">Flame beats Gale &middot; Gale beats Tide &middot; Tide beats Flame. Same suit twice in a row: Surge +2.</div>
+  </section>
+
+  <section id="player-zone" class="zone" aria-label="Player">
+    <div class="fighter">
+      <div class="avatar player">Y</div>
+      <div class="fighter-info">
+        <div class="fighter-name">YOU <span>the Ember Duelist</span></div>
+        <div class="bar-row"><span class="bar-label">Life</span><div class="bar"><div id="player-life-fill" class="fill player-fill" style="width:100%"></div></div><span id="player-life-num" class="bar-num">20</span></div>
+        <div class="bar-row"><span class="bar-label">Ember</span><div class="bar ember-bar"><div id="player-ember-fill" class="fill ember-fill" style="width:50%"></div></div><span id="player-ember-num" class="bar-num">5</span></div>
+      </div>
+      <div class="actions">
+        <button id="reveal-btn" type="button">Reveal (Enter)</button>
+        <button id="meditate-btn" type="button" title="Gain 3 ember, heal 1, skip the round">Meditate</button>
+      </div>
+    </div>
+    <div id="player-hand" class="hand" aria-label="Your hand"></div>
+    <div id="hand-hint">Keys 1&ndash;5 pick a card &middot; Enter reveals &middot; M sound &middot; R restart</div>
+  </section>
+
+  <div id="overlay" class="hidden">
+    <div id="overlay-card">
+      <div id="overlay-kicker"></div>
+      <h1 id="overlay-title"></h1>
+      <p id="overlay-text"></p>
+      <div id="overlay-stats"></div>
+      <button id="overlay-btn" type="button"></button>
+      <div id="overlay-foot"></div>
+    </div>
+  </div>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
